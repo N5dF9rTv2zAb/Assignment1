@@ -22,7 +22,7 @@ public class ExtremeITProducts {
     private static ArrayList<ReportData> productList = new ArrayList<ReportData>();
     private static Scanner scanner = new Scanner(System.in);
 
-    // Display Menu and handle loop flow
+    // Display Menu 
     public static void DisplayMenu() {
         System.out.println("BRIGHT FUTURE TECHNOLOGIES APPLICATION");
         System.out.println("**************************************");
@@ -33,7 +33,7 @@ public class ExtremeITProducts {
             ExitApplication();
             return;
         }
-
+//while loop for the menu selection 
         int menuChoice = 0;
         while (menuChoice != 6) {
             System.out.println("\nPlease select one of the following menu items:");
@@ -47,7 +47,7 @@ public class ExtremeITProducts {
 
             if (scanner.hasNextInt()) {
                 menuChoice = scanner.nextInt();
-                scanner.nextLine(); // clear buffer
+                scanner.nextLine(); // skip a line
 
                 switch (menuChoice) {
                     case 1:
@@ -98,7 +98,7 @@ public class ExtremeITProducts {
         System.out.print("Enter the product name: ");
         String name = scanner.nextLine();
 
-        // Category selection logic
+        // Category selection 
         String category = "";
         boolean validCategory = false;
         while (!validCategory) {
@@ -131,7 +131,7 @@ public class ExtremeITProducts {
             }
         }
 
-        // Warranty selection logic
+        // Warranty selection 
         System.out.print("Indicate the product warranty. Enter (1) for 6 months or any other key for 2 years: ");
         String warrantyInput = scanner.nextLine();
         String warranty = warrantyInput.equals("1") ? "6 months" : "2 years";
@@ -141,7 +141,7 @@ public class ExtremeITProducts {
 
         System.out.print("Enter the stock level for " + name + " >> ");
         int stock = scanner.nextInt();
-        scanner.nextLine(); // clear buffer
+        scanner.nextLine(); 
 
         System.out.print("Enter the supplier for " + name + " >> ");
         String supplier = scanner.nextLine();
@@ -231,7 +231,7 @@ public class ExtremeITProducts {
         }
     }
 
-    // Delete Product with confirmation
+    // Delete Product
     public static void DeleteProduct() {
         System.out.print("Please enter the product code to be deleted: ");
         String code = scanner.nextLine();
@@ -258,7 +258,7 @@ public class ExtremeITProducts {
         }
     }
 
-    // Print Report matching manual layout and aggregate calculations
+    // Print Report
     public static void PrintReport() {
         System.out.println("\nPRODUCT REPORT");
         System.out.println("================================================================================");
@@ -284,7 +284,13 @@ public class ExtremeITProducts {
             }
 
             int totalCount = productList.size();
-            double averageValue = totalCount > 0 ? (totalValue / totalCount) : 0.0;
+            double averageValue;
+            if (totalCount > 0 ){
+                averageValue = (totalValue / totalCount);
+            }
+            else{
+                averageValue = 0.0;
+            }
 
             System.out.println("================================================================================");
             System.out.println("TOTAL PRODUCT COUNT: " + totalCount);
